@@ -1,0 +1,690 @@
+
+    <!-- งานใหม่ -->
+  <!-- Active -->
+  
+<div class="portlet-body">
+  <div class="tabbable-custom nav-justified">
+    <ul class="nav nav-tabs">
+      <li class="active sbold font">
+        <a href="#tab1" data-toggle="tab" aria-expanded="true">ติดตั้ง <span class="badge"> {{resultNum}} </span></a>
+      </li>
+      <li class="sbold">
+        <a href="#tab2" data-toggle="tab" aria-expanded="false">RND <span class="badge"> {{resultNum2}} </span></a>
+      </li>
+      <li class="sbold">
+        <a href="#tab3" data-toggle="tab" aria-expanded="false">SDE+SDN <span class="badge"> {{resultNum3}} </span></a>
+      </li>
+      <li class="sbold">
+        <a href="#tab4" data-toggle="tab" aria-expanded="false">AP Down <span class="badge"> {{resultNum4}} </span></a>
+      </li>
+      <li class="sbold">
+        <a href="#tab5" data-toggle="tab" aria-expanded="false">BNW+NDS+NED+NES+NET <span class="badge"> {{resultNum5}} </span></a>
+      </li>
+      <li class="sbold">
+          <a href="#tab6" data-toggle="tab" aria-expanded="false">CUS <span class="badge"> {{resultNum6}} </span></a>
+        </li>
+    </ul>
+    <div class="tab-content">
+      <div class="panel tab-pane active" id="tab1">
+        <div class="caption">
+          <h1 class="icon-bubble font-green-sharp">
+            <span class="caption-subject font-green-sharp sbold font"> Active</span>
+          </h1>
+
+            <div class="input-group" style="float: right; margin-top: 11px;">
+              <div class="input-icon right">
+                <i class="icon-magnifier">
+                </i>
+                <input type="text" placeholder="Search.." class="form-control sbold font" [(ngModel)]="FilterSearch">
+              </div>
+            </div>
+          
+          <hr>
+          <br>
+        </div>
+        <div class="panel-body">
+          <div class="row">
+            <div class="col-lg-4 col-md-3 col-sm-6 col-xs-12" *ngFor="let item of resultData | filter:FilterSearch: '' ">
+              <a class="dashboard-stat dashboard-stat-v2 red "
+                  href="{{item.link}}" 
+                  target="_blank"
+                  [ngStyle] = "{'background-color': getColorDay(item.days.toFixed(0))}">
+            <!-- <div [ngStyle]="{'background-color':item.days === '366.0098' ? 'green' : 'red' }"></<div> -->
+            <!-- <div class="avater">{{(item.days).toFixed(0)}} D</div> -->
+                <div class="avater" [ngStyle]="{'background-color': getColorDay(item.days.toFixed(0))}" style="font-size: 26px; text-align: center; font-weight: bold;" >{{item.days.toFixed(0)}}D</div>
+                <div class="visual">
+                  <i class="fa fa-comments"></i>
+                </div>
+                <table>
+                  <tr>
+                    <div class="details" style="width: calc(100% - 50px);">
+                      <div style="text-align: right; margin-top: -50px; color: black;">{{item.STATUS}}</div>
+                        <div class= "number" style=" color: black; display: block; text-align: right;">
+                          <span data-counter="counterup" data-value="">{{item.custgroupName}}</span>
+                        </div>
+                      <div class="desc" style=" color: black;">{{item.team}}</div><br>
+                      <!-- <div class="desc" style="text-align: left; text-align: bottom; color: black;">{{(item.COMMENT > 20)? | (item.COMMENT | slice:0:20) + '....':(item.COMMENT)}}</div> -->
+                    </div>
+                  </tr>
+                  <tr>
+                    <div class="details" style="width: calc(100% - 50px);">
+                      <div class="desc" style="text-align: left; color: black; margin-top: 100px;">{{item.COMMENT | short}}</div> 
+                    </div>
+                  </tr>
+                </table>
+              </a>
+            </div>
+          </div>
+        </div>
+    <br>
+    <br>
+    <br>
+    <br>
+        <!-- On Hold -->
+      
+        <div class="caption">
+          <h1 class="icon-bubble font-grey-gallery">
+            <span class="caption-subject font-grey-gallery sbold font"> On Hold</span>
+          </h1>
+          <div class="input-group" style="float: right; margin-top: 11px;">
+            <div class="input-icon right">
+              <i class="icon-magnifier">
+              </i>
+              <input type="text" placeholder="Search.." class="form-control sbold font" [(ngModel)]="FilterSearchOnHold">
+            </div>
+          </div>
+          <hr>
+          <br>
+        </div>
+        <div class="panel-body">
+          <div class="row">
+              <div class="col-lg-4 col-md-3 col-sm-6 col-xs-12"  *ngFor="let item of resultDataOnHold | filter:FilterSearchOnHold: '' ">
+                <a class="dashboard-stat dashboard-stat-v2 red "
+                    href="{{item.link}}" 
+                    target="_blank"
+                    [ngStyle] = "{'background-color': getColorDay(item.days.toFixed(0))}">
+              <!-- <div [ngStyle]="{'background-color':item.days === '366.0098' ? 'green' : 'red' }"></<div> -->
+              <!-- <div class="avater">{{(item.days).toFixed(0)}} D</div> -->
+                  <div class="avater" [ngStyle]="{'background-color': getColorDay(item.days.toFixed(0))}" style="font-size: 26px; text-align: center; font-weight: bold;" >{{item.days.toFixed(0)}}D</div>
+                  <div class="visual">
+                    <i class="fa fa-comments"></i>
+                  </div>
+                  <table>
+                    <tr>
+                      <div class="details" style="width: calc(100% - 50px);">
+                        <div style="text-align: right; margin-top: -50px; color: black;">{{item.STATUS}}</div>
+                          <div class= "number" style=" color: black; display: block; text-align: right;">
+                            <span data-counter="counterup" data-value="">{{item.custgroupName}}</span>
+                          </div>
+                        <div class="desc" style=" color: black;">{{item.team}}</div><br>
+                        <!-- <div class="desc" style="text-align: left; text-align: bottom; color: black;">{{(item.COMMENT > 20)? | (item.COMMENT | slice:0:20) + '....':(item.COMMENT)}}</div> -->
+                      </div>
+                    </tr>
+                    <tr>
+                      <div class="details" style="width: calc(100% - 50px);">
+                        <div class="desc" style="text-align: left; color: black; margin-top: 100px;">{{item.COMMENT | short}}</div> 
+                      </div>
+                    </tr>
+                  </table>
+                  </a>
+                </div>
+          </div>
+        </div>
+      </div>
+      <div class="panel tab-pane" id="tab2">
+        <div class="caption">
+          <h1 class="icon-bubble font-green-sharp">
+            <span class="caption-subject font-green-sharp sbold font"> Active</span>
+          </h1>
+
+            <div class="input-group" style="float: right; margin-top: 11px;">
+              <div class="input-icon right">
+                <i class="icon-magnifier">
+                </i>
+                <input type="text" placeholder="Search.." class="form-control sbold font" [(ngModel)]="FilterSearch">
+              </div>
+            </div>
+          
+          <hr>
+          <br>
+        </div>
+        <div class="panel-body">
+          <div class="row">
+            <div class="col-lg-4 col-md-3 col-sm-6 col-xs-12" *ngFor="let item of resultData2 | filter:FilterSearch: '' ">
+              <a class="dashboard-stat dashboard-stat-v2 red "
+                  href="{{item.link}}" 
+                  target="_blank"
+                  [ngStyle] = "{'background-color': getColorDay(item.days.toFixed(0))}">
+            <!-- <div [ngStyle]="{'background-color':item.days === '366.0098' ? 'green' : 'red' }"></<div> -->
+            <!-- <div class="avater">{{(item.days).toFixed(0)}} D</div> -->
+                <div class="avater" [ngStyle]="{'background-color': getColorDay(item.days.toFixed(0))}" style="font-size: 26px; text-align: center; font-weight: bold;" >{{item.days.toFixed(0)}}D</div>
+                <div class="visual">
+                  <i class="fa fa-comments"></i>
+                </div>
+                <table>
+                  <tr>
+                    <div class="details" style="width: calc(100% - 50px);">
+                      <div style="text-align: right; margin-top: -50px; color: black;">{{item.STATUS}}</div>
+                        <div class= "number" style=" color: black; display: block; text-align: right;">
+                          <span data-counter="counterup" data-value="">{{item.custgroupName}}</span>
+                        </div>
+                      <div class="desc" style=" color: black;">{{item.team}}</div><br>
+                      <!-- <div class="desc" style="text-align: left; text-align: bottom; color: black;">{{(item.COMMENT > 20)? | (item.COMMENT | slice:0:20) + '....':(item.COMMENT)}}</div> -->
+                    </div>
+                  </tr>
+                  <tr>
+                    <div class="details" style="width: calc(100% - 50px);">
+                      <div class="desc" style="text-align: left; color: black; margin-top: 100px;">{{item.COMMENT | short}}</div> 
+                    </div>
+                  </tr>
+                </table>
+              </a>
+            </div>
+          </div>
+        </div>
+    <br>
+    <br>
+    <br>
+    <br>
+        <!-- On Hold -->
+      
+        <div class="caption">
+          <h1 class="icon-bubble font-grey-gallery">
+            <span class="caption-subject font-grey-gallery sbold font"> On Hold</span>
+          </h1>
+          <div class="input-group" style="float: right; margin-top: 11px;">
+            <div class="input-icon right">
+              <i class="icon-magnifier">
+              </i>
+              <input type="text" placeholder="Search.." class="form-control sbold font" [(ngModel)]="FilterSearchOnHold">
+            </div>
+          </div>
+          <hr>
+          <br>
+        </div>
+        <div class="panel-body">
+          <div class="row">
+              <div class="col-lg-4 col-md-3 col-sm-6 col-xs-12"  *ngFor="let item of resultDataOnHold2 | filter:FilterSearchOnHold: '' ">
+                <a class="dashboard-stat dashboard-stat-v2 red "
+                    href="{{item.link}}" 
+                    target="_blank"
+                    [ngStyle] = "{'background-color': getColorDay(item.days.toFixed(0))}">
+              <!-- <div [ngStyle]="{'background-color':item.days === '366.0098' ? 'green' : 'red' }"></<div> -->
+              <!-- <div class="avater">{{(item.days).toFixed(0)}} D</div> -->
+                  <div class="avater" [ngStyle]="{'background-color': getColorDay(item.days.toFixed(0))}" style="font-size: 26px; text-align: center; font-weight: bold;" >{{item.days.toFixed(0)}}D</div>
+                  <div class="visual">
+                    <i class="fa fa-comments"></i>
+                  </div>
+                  <table>
+                    <tr>
+                      <div class="details" style="width: calc(100% - 50px);">
+                        <div style="text-align: right; margin-top: -50px; color: black;">{{item.STATUS}}</div>
+                          <div class= "number" style=" color: black; display: block; text-align: right;">
+                            <span data-counter="counterup" data-value="">{{item.custgroupName}}</span>
+                          </div>
+                        <div class="desc" style=" color: black;">{{item.team}}</div><br>
+                        <!-- <div class="desc" style="text-align: left; text-align: bottom; color: black;">{{(item.COMMENT > 20)? | (item.COMMENT | slice:0:20) + '....':(item.COMMENT)}}</div> -->
+                      </div>
+                    </tr>
+                    <tr>
+                      <div class="details" style="width: calc(100% - 50px);">
+                        <div class="desc" style="text-align: left; color: black; margin-top: 100px;">{{item.COMMENT | short}}</div> 
+                      </div>
+                    </tr>
+                  </table>
+                  </a>
+                </div>
+          </div>
+        </div>
+      </div>
+      <div class="panel tab-pane" id="tab3">
+        <div class="caption">
+          <h1 class="icon-bubble font-green-sharp">
+            <span class="caption-subject font-green-sharp sbold font"> Active</span>
+          </h1>
+
+            <div class="input-group" style="float: right; margin-top: 11px;">
+              <div class="input-icon right">
+                <i class="icon-magnifier">
+                </i>
+                <input type="text" placeholder="Search.." class="form-control sbold font" [(ngModel)]="FilterSearch">
+              </div>
+            </div>
+          
+          <hr>
+          <br>
+        </div>
+        <div class="panel-body">
+          <div class="row">
+            <div class="col-lg-4 col-md-3 col-sm-6 col-xs-12" *ngFor="let item of resultData3 | filter:FilterSearch: '' ">
+              <a class="dashboard-stat dashboard-stat-v2 red "
+                  href="{{item.link}}" 
+                  target="_blank"
+                  [ngStyle] = "{'background-color': getColorDay(item.days.toFixed(0))}">
+            <!-- <div [ngStyle]="{'background-color':item.days === '366.0098' ? 'green' : 'red' }"></<div> -->
+            <!-- <div class="avater">{{(item.days).toFixed(0)}} D</div> -->
+                <div class="avater" [ngStyle]="{'background-color': getColorDay(item.days.toFixed(0))}" style="font-size: 26px; text-align: center; font-weight: bold;" >{{item.days.toFixed(0)}}D</div>
+                <div class="visual">
+                  <i class="fa fa-comments"></i>
+                </div>
+                <table>
+                  <tr>
+                    <div class="details" style="width: calc(100% - 50px);">
+                      <div style="text-align: right; margin-top: -50px; color: black;">{{item.STATUS}}</div>
+                        <div class= "number" style=" color: black; display: block; text-align: right;">
+                          <span data-counter="counterup" data-value="">{{item.custgroupName}}</span>
+                        </div>
+                      <div class="desc" style=" color: black;">{{item.team}}</div><br>
+                      <!-- <div class="desc" style="text-align: left; text-align: bottom; color: black;">{{(item.COMMENT > 20)? | (item.COMMENT | slice:0:20) + '....':(item.COMMENT)}}</div> -->
+                    </div>
+                  </tr>
+                  <tr>
+                    <div class="details" style="width: calc(100% - 50px);">
+                      <div class="desc" style="text-align: left; color: black; margin-top: 100px;">{{item.COMMENT | short}}</div> 
+                    </div>
+                  </tr>
+                </table>
+              </a>
+            </div>
+          </div>
+        </div>
+    <br>
+    <br>
+    <br>
+    <br>
+        <!-- On Hold -->
+      
+        <div class="caption">
+          <h1 class="icon-bubble font-grey-gallery">
+            <span class="caption-subject font-grey-gallery sbold font"> On Hold</span>
+          </h1>
+          <div class="input-group" style="float: right; margin-top: 11px;">
+            <div class="input-icon right">
+              <i class="icon-magnifier">
+              </i>
+              <input type="text" placeholder="Search.." class="form-control sbold font" [(ngModel)]="FilterSearchOnHold">
+            </div>
+          </div>
+          <hr>
+          <br>
+        </div>
+        <div class="panel-body">
+          <div class="row">
+              <div class="col-lg-4 col-md-3 col-sm-6 col-xs-12"  *ngFor="let item of resultDataOnHold3 | filter:FilterSearchOnHold: '' ">
+                <a class="dashboard-stat dashboard-stat-v2 red "
+                    href="{{item.link}}" 
+                    target="_blank"
+                    [ngStyle] = "{'background-color': getColorDay(item.days.toFixed(0))}">
+              <!-- <div [ngStyle]="{'background-color':item.days === '366.0098' ? 'green' : 'red' }"></<div> -->
+              <!-- <div class="avater">{{(item.days).toFixed(0)}} D</div> -->
+                  <div class="avater" [ngStyle]="{'background-color': getColorDay(item.days.toFixed(0))}" style="font-size: 26px; text-align: center; font-weight: bold;" >{{item.days.toFixed(0)}}D</div>
+                  <div class="visual">
+                    <i class="fa fa-comments"></i>
+                  </div>
+                  <table>
+                    <tr>
+                      <div class="details" style="width: calc(100% - 50px);">
+                        <div style="text-align: right; margin-top: -50px; color: black;">{{item.STATUS}}</div>
+                          <div class= "number" style=" color: black; display: block; text-align: right;">
+                            <span data-counter="counterup" data-value="">{{item.custgroupName}}</span>
+                          </div>
+                        <div class="desc" style=" color: black;">{{item.team}}</div><br>
+                        <!-- <div class="desc" style="text-align: left; text-align: bottom; color: black;">{{(item.COMMENT > 20)? | (item.COMMENT | slice:0:20) + '....':(item.COMMENT)}}</div> -->
+                      </div>
+                    </tr>
+                    <tr>
+                      <div class="details" style="width: calc(100% - 50px);">
+                        <div class="desc" style="text-align: left; color: black; margin-top: 100px;">{{item.COMMENT | short}}</div> 
+                      </div>
+                    </tr>
+                  </table>
+                  </a>
+                </div>
+          </div>
+        </div>
+      </div>
+      <div class="panel tab-pane" id="tab4">
+          <div class="caption">
+              <h1 class="icon-bubble font-green-sharp">
+                <span class="caption-subject font-green-sharp sbold font"> Active</span>
+              </h1>
+    
+                <div class="input-group" style="float: right; margin-top: 11px;">
+                  <div class="input-icon right">
+                    <i class="icon-magnifier">
+                    </i>
+                    <input type="text" placeholder="Search.." class="form-control sbold font" [(ngModel)]="FilterSearch">
+                  </div>
+                </div>
+              
+              <hr>
+              <br>
+            </div>
+            <div class="panel-body">
+              <div class="row">
+                <div class="col-lg-4 col-md-3 col-sm-6 col-xs-12" *ngFor="let item of resultData4 | filter:FilterSearch: '' ">
+                  <a class="dashboard-stat dashboard-stat-v2 red "
+                      href="{{item.link}}" 
+                      target="_blank"
+                      [ngStyle] = "{'background-color': getColorDay(item.days.toFixed(0))}">
+                <!-- <div [ngStyle]="{'background-color':item.days === '366.0098' ? 'green' : 'red' }"></<div> -->
+                <!-- <div class="avater">{{(item.days).toFixed(0)}} D</div> -->
+                    <div class="avater" [ngStyle]="{'background-color': getColorDay(item.days.toFixed(0))}" style="font-size: 26px; text-align: center; font-weight: bold;" >{{item.days.toFixed(0)}}D</div>
+                    <div class="visual">
+                      <i class="fa fa-comments"></i>
+                    </div>
+                    <table>
+                      <tr>
+                        <div class="details" style="width: calc(100% - 50px);">
+                          <div style="text-align: right; margin-top: -50px; color: black;">{{item.STATUS}}</div>
+                            <div class= "number" style=" color: black; display: block; text-align: right;">
+                              <span data-counter="counterup" data-value="">{{item.custgroupName}}</span>
+                            </div>
+                          <div class="desc" style=" color: black;">{{item.team}}</div><br>
+                          <!-- <div class="desc" style="text-align: left; text-align: bottom; color: black;">{{(item.COMMENT > 20)? | (item.COMMENT | slice:0:20) + '....':(item.COMMENT)}}</div> -->
+                        </div>
+                      </tr>
+                      <tr>
+                        <div class="details" style="width: calc(100% - 50px);">
+                          <div class="desc" style="text-align: left; color: black; margin-top: 100px;">{{item.COMMENT | short}}</div> 
+                        </div>
+                      </tr>
+                    </table>
+                  </a>
+                </div>
+              </div>
+            </div>
+        <br>
+        <br>
+        <br>
+        <br>
+            <!-- On Hold -->
+          
+            <div class="caption">
+              <h1 class="icon-bubble font-grey-gallery">
+                <span class="caption-subject font-grey-gallery sbold font"> On Hold</span>
+              </h1>
+              <div class="input-group" style="float: right; margin-top: 11px;">
+                <div class="input-icon right">
+                  <i class="icon-magnifier">
+                  </i>
+                  <input type="text" placeholder="Search.." class="form-control sbold font" [(ngModel)]="FilterSearchOnHold">
+                </div>
+              </div>
+              <hr>
+              <br>
+            </div>
+            <div class="panel-body">
+              <div class="row">
+                  <div class="col-lg-4 col-md-3 col-sm-6 col-xs-12"  *ngFor="let item of resultDataOnHold4 | filter:FilterSearchOnHold: '' ">
+                    <a class="dashboard-stat dashboard-stat-v2 red "
+                        href="{{item.link}}" 
+                        target="_blank"
+                        [ngStyle] = "{'background-color': getColorDay(item.days.toFixed(0))}">
+                  <!-- <div [ngStyle]="{'background-color':item.days === '366.0098' ? 'green' : 'red' }"></<div> -->
+                  <!-- <div class="avater">{{(item.days).toFixed(0)}} D</div> -->
+                      <div class="avater" [ngStyle]="{'background-color': getColorDay(item.days.toFixed(0))}" style="font-size: 26px; text-align: center; font-weight: bold;" >{{item.days.toFixed(0)}}D</div>
+                      <div class="visual">
+                        <i class="fa fa-comments"></i>
+                      </div>
+                      <table>
+                        <tr>
+                          <div class="details" style="width: calc(100% - 50px);">
+                            <div style="text-align: right; margin-top: -50px; color: black;">{{item.STATUS}}</div>
+                              <div class= "number" style=" color: black; display: block; text-align: right;">
+                                <span data-counter="counterup" data-value="">{{item.custgroupName}}</span>
+                              </div>
+                            <div class="desc" style=" color: black;">{{item.team}}</div><br>
+                            <!-- <div class="desc" style="text-align: left; text-align: bottom; color: black;">{{(item.COMMENT > 20)? | (item.COMMENT | slice:0:20) + '....':(item.COMMENT)}}</div> -->
+                          </div>
+                        </tr>
+                        <tr>
+                          <div class="details" style="width: calc(100% - 50px);">
+                            <div class="desc" style="text-align: left; color: black; margin-top: 100px;">{{item.COMMENT | short}}</div> 
+                          </div>
+                        </tr>
+                      </table>
+                      </a>
+                    </div>
+              </div>
+            </div>
+      </div>
+      <div class="panel tab-pane" id="tab5">
+          <div class="caption">
+              <h1 class="icon-bubble font-green-sharp">
+                <span class="caption-subject font-green-sharp sbold font"> Active</span>
+              </h1>
+    
+                <div class="input-group" style="float: right; margin-top: 11px;">
+                  <div class="input-icon right">
+                    <i class="icon-magnifier">
+                    </i>
+                    <input type="text" placeholder="Search.." class="form-control sbold font" [(ngModel)]="FilterSearch">
+                  </div>
+                </div>
+              
+              <hr>
+              <br>
+            </div>
+            <div class="panel-body">
+              <div class="row">
+                <div class="col-lg-4 col-md-3 col-sm-6 col-xs-12" *ngFor="let item of resultData5 | filter:FilterSearch: '' ">
+                  <a class="dashboard-stat dashboard-stat-v2 red "
+                      href="{{item.link}}" 
+                      target="_blank"
+                      [ngStyle] = "{'background-color': getColorDay(item.days.toFixed(0))}">
+                <!-- <div [ngStyle]="{'background-color':item.days === '366.0098' ? 'green' : 'red' }"></<div> -->
+                <!-- <div class="avater">{{(item.days).toFixed(0)}} D</div> -->
+                    <div class="avater" [ngStyle]="{'background-color': getColorDay(item.days.toFixed(0))}" style="font-size: 26px; text-align: center; font-weight: bold;" >{{item.days.toFixed(0)}}D</div>
+                    <div class="visual">
+                      <i class="fa fa-comments"></i>
+                    </div>
+                    <table>
+                      <tr>
+                        <div class="details" style="width: calc(100% - 50px);">
+                          <div style="text-align: right; margin-top: -50px; color: black;">{{item.STATUS}}</div>
+                            <div class= "number" style=" color: black; display: block; text-align: right;">
+                              <span data-counter="counterup" data-value="">{{item.custgroupName}}</span>
+                            </div>
+                          <div class="desc" style=" color: black;">{{item.team}}</div><br>
+                          <!-- <div class="desc" style="text-align: left; text-align: bottom; color: black;">{{(item.COMMENT > 20)? | (item.COMMENT | slice:0:20) + '....':(item.COMMENT)}}</div> -->
+                        </div>
+                      </tr>
+                      <tr>
+                        <div class="details" style="width: calc(100% - 50px);">
+                          <div class="desc" style="text-align: left; color: black; margin-top: 100px;">{{item.COMMENT | short}}</div> 
+                        </div>
+                      </tr>
+                    </table>
+                  </a>
+                </div>
+              </div>
+            </div>
+        <br>
+        <br>
+        <br>
+        <br>
+            <!-- On Hold -->
+          
+            <div class="caption">
+              <h1 class="icon-bubble font-grey-gallery">
+                <span class="caption-subject font-grey-gallery sbold font"> On Hold</span>
+              </h1>
+              <div class="input-group" style="float: right; margin-top: 11px;">
+                <div class="input-icon right">
+                  <i class="icon-magnifier">
+                  </i>
+                  <input type="text" placeholder="Search.." class="form-control sbold font" [(ngModel)]="FilterSearchOnHold">
+                </div>
+              </div>
+              <hr>
+              <br>
+            </div>
+            <div class="panel-body">
+              <div class="row">
+                  <div class="col-lg-4 col-md-3 col-sm-6 col-xs-12"  *ngFor="let item of resultDataOnHold5 | filter:FilterSearchOnHold: '' ">
+                    <a class="dashboard-stat dashboard-stat-v2 red "
+                        href="{{item.link}}" 
+                        target="_blank"
+                        [ngStyle] = "{'background-color': getColorDay(item.days.toFixed(0))}">
+                  <!-- <div [ngStyle]="{'background-color':item.days === '366.0098' ? 'green' : 'red' }"></<div> -->
+                  <!-- <div class="avater">{{(item.days).toFixed(0)}} D</div> -->
+                      <div class="avater" [ngStyle]="{'background-color': getColorDay(item.days.toFixed(0))}" style="font-size: 26px; text-align: center; font-weight: bold;" >{{item.days.toFixed(0)}}D</div>
+                      <div class="visual">
+                        <i class="fa fa-comments"></i>
+                      </div>
+                      <table>
+                        <tr>
+                          <div class="details" style="width: calc(100% - 50px);">
+                            <div style="text-align: right; margin-top: -50px; color: black;">{{item.STATUS}}</div>
+                              <div class= "number" style=" color: black; display: block; text-align: right;">
+                                <span data-counter="counterup" data-value="">{{item.custgroupName}}</span>
+                              </div>
+                            <div class="desc" style=" color: black;">{{item.team}}</div><br>
+                            <!-- <div class="desc" style="text-align: left; text-align: bottom; color: black;">{{(item.COMMENT > 20)? | (item.COMMENT | slice:0:20) + '....':(item.COMMENT)}}</div> -->
+                          </div>
+                        </tr>
+                        <tr>
+                          <div class="details" style="width: calc(100% - 50px);">
+                            <div class="desc" style="text-align: left; color: black; margin-top: 100px;">{{item.COMMENT | short}}</div> 
+                          </div>
+                        </tr>
+                      </table>
+                      </a>
+                    </div>
+              </div>
+            </div>
+      </div>
+      <div class="panel tab-pane" id="tab6">
+          <div class="caption">
+              <h1 class="icon-bubble font-green-sharp">
+                <span class="caption-subject font-green-sharp sbold font"> Active</span>
+              </h1>
+    
+                <div class="input-group" style="float: right; margin-top: 11px;">
+                  <div class="input-icon right">
+                    <i class="icon-magnifier">
+                    </i>
+                    <input type="text" placeholder="Search.." class="form-control sbold font" [(ngModel)]="FilterSearch">
+                  </div>
+                </div>
+              
+              <hr>
+              <br>
+            </div>
+            <div class="panel-body">
+              <div class="row">
+                <div class="col-lg-4 col-md-3 col-sm-6 col-xs-12" *ngFor="let item of resultData6 | filter:FilterSearch: '' ">
+                  <a class="dashboard-stat dashboard-stat-v2 red "
+                      href="{{item.link}}" 
+                      target="_blank"
+                      [ngStyle] = "{'background-color': getColorDay(item.days.toFixed(0))}">
+                <!-- <div [ngStyle]="{'background-color':item.days === '366.0098' ? 'green' : 'red' }"></<div> -->
+                <!-- <div class="avater">{{(item.days).toFixed(0)}} D</div> -->
+                    <div class="avater" [ngStyle]="{'background-color': getColorDay(item.days.toFixed(0))}" style="font-size: 26px; text-align: center; font-weight: bold;" >{{item.days.toFixed(0)}}D</div>
+                    <div class="visual">
+                      <i class="fa fa-comments"></i>
+                    </div>
+                    <table>
+                      <tr>
+                        <div class="details" style="width: calc(100% - 50px);">
+                          <div style="text-align: right; margin-top: -50px; color: black;">{{item.STATUS}}</div>
+                            <div class= "number" style=" color: black; display: block; text-align: right;">
+                              <span data-counter="counterup" data-value="">{{item.custgroupName}}</span>
+                            </div>
+                          <div class="desc" style=" color: black;">{{item.team}}</div><br>
+                          <!-- <div class="desc" style="text-align: left; text-align: bottom; color: black;">{{(item.COMMENT > 20)? | (item.COMMENT | slice:0:20) + '....':(item.COMMENT)}}</div> -->
+                        </div>
+                      </tr>
+                      <tr>
+                        <div class="details" style="width: calc(100% - 50px);">
+                          <div class="desc" style="text-align: left; color: black; margin-top: 100px;">{{item.COMMENT | short}}</div> 
+                        </div>
+                      </tr>
+                    </table>
+                  </a>
+                </div>
+              </div>
+            </div>
+        <br>
+        <br>
+        <br>
+        <br>
+            <!-- On Hold -->
+          
+            <div class="caption">
+              <h1 class="icon-bubble font-grey-gallery">
+                <span class="caption-subject font-grey-gallery sbold font"> On Hold</span>
+              </h1>
+              <div class="input-group" style="float: right; margin-top: 11px;">
+                <div class="input-icon right">
+                  <i class="icon-magnifier">
+                  </i>
+                  <input type="text" placeholder="Search.." class="form-control sbold font" [(ngModel)]="FilterSearchOnHold">
+                </div>
+              </div>
+              <hr>
+              <br>
+            </div>
+            <div class="panel-body">
+              <div class="row">
+                  <div class="col-lg-4 col-md-3 col-sm-6 col-xs-12"  *ngFor="let item of resultDataOnHold6 | filter:FilterSearchOnHold: '' ">
+                    <a class="dashboard-stat dashboard-stat-v2 red "
+                        href="{{item.link}}" 
+                        target="_blank"
+                        [ngStyle] = "{'background-color': getColorDay(item.days.toFixed(0))}">
+                  <!-- <div [ngStyle]="{'background-color':item.days === '366.0098' ? 'green' : 'red' }"></<div> -->
+                  <!-- <div class="avater">{{(item.days).toFixed(0)}} D</div> -->
+                      <div class="avater" [ngStyle]="{'background-color': getColorDay(item.days.toFixed(0))}" style="font-size: 26px; text-align: center; font-weight: bold;" >{{item.days.toFixed(0)}}D</div>
+                      <div class="visual">
+                        <i class="fa fa-comments"></i>
+                      </div>
+                      <table>
+                        <tr>
+                          <div class="details" style="width: calc(100% - 50px);">
+                            <div style="text-align: right; margin-top: -50px; color: black;">{{item.STATUS}}</div>
+                              <div class= "number" style=" color: black; display: block; text-align: right;">
+                                <span data-counter="counterup" data-value="">{{item.custgroupName}}</span>
+                              </div>
+                            <div class="desc" style=" color: black;">{{item.team}}</div><br>
+                            <!-- <div class="desc" style="text-align: left; text-align: bottom; color: black;">{{(item.COMMENT > 20)? | (item.COMMENT | slice:0:20) + '....':(item.COMMENT)}}</div> -->
+                          </div>
+                        </tr>
+                        <tr>
+                          <div class="details" style="width: calc(100% - 50px);">
+                            <div class="desc" style="text-align: left; color: black; margin-top: 100px;">{{item.COMMENT | short}}</div> 
+                          </div>
+                        </tr>
+                      </table>
+                      </a>
+                    </div>
+              </div>
+            </div>
+      </div>
+    </div>  
+  </div>
+</div>   
+      
+    <!-- งานเก่า
+    <div class="row">
+      <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12" *ngFor="let item of resultData">
+        <a class="dashboard-stat dashboard-stat-v2 {{item.color}}" href="#">
+          <div class="avater {{item.color}}">{{item.id}} D</div>
+          <div style="margin-left: 20px; margin-top: 10px; color:aliceblue;">{{item.days + " Days"}}</div>
+          <div class="visual">
+            <i class="fa fa-comments"></i>
+          </div>
+          
+          <div class="details" style="width: calc(100% - 50px);">
+              <div class="number">
+                <span data-counter="counterup" data-value="">{{item.custgroupName}}</span>
+              </div>
+              <div class="desc">{{item.team}}</div>
+              <div class="desc" style="text-align: left;">{{item.comment}}</div> 
+          </div>
+
+        </a>
+      </div>
+    </div> -->
+
+   
