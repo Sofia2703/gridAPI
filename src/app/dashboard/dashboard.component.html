@@ -4,20 +4,48 @@
   </tr>
 </table> -->
 
-<div class="container" *ngFor="let item of resultData">
-  <table class="table table-striped table-bordered" style="margin-top: 10px;" >
+<div class="container" >
+  <input type="text" placeholder="Search.." class="form-control sbold font" [(ngModel)]="FilterSearch">
+  <table class="table table-bordered table-gin" style="margin-top: 10px;" >
     <thead>
       <tr>
+        <th>id</th>
+        <th>custgroupName</th>
+        <th>team</th>
+        <th>title</th>
+        <th>STATUS</th>
+        <th>priority</th>
+        <th>link</th>
+        <th>COMMENT</th>
         <th>Days</th>
-        <th>Status</th>
+        <th>type</th>
+        <th>userType</th>
+        <th>username</th>
+        <th>description</th>
+        <th>createdtime</th>
+        <th>modifiedtime</th>
+        <th>cf_568id</th>
 
       </tr>
     </thead>
-    <tbody>
+    <tbody *ngFor="let item of resultData | filter:FilterSearch: '' ">
       <tr>
-        <td>{{item.days | short}}</td>
+        <td>{{ item.id }}</td>
+        <td>{{ item.custgroupName }}</td>
+        <td>{{ item.team }}</td>
+        <td>{{ item.title }}</td>
         <td>{{ item.STATUS }}</td>
-        <td>{{ item.STATUS }}</td>
+        <td>{{ item.priority }}</td>
+        <td>{{ item.link | short }}</td>
+        <td>{{ item.COMMENT | short }}</td>
+        <td>{{item.days.toFixed(0)}}</td>
+        <td>{{ item.type | short }}</td>
+        <td>{{ item.userType }}</td>
+        <td>{{ item.username }}</td>
+        <td>{{ item.description }}</td>
+        <td>{{ item.createdtime }}</td>
+        <td>{{ item.modifiedtime }}</td>
+        <td>{{ item.cf_568id }}</td>
       </tr>
     </tbody>
   </table>

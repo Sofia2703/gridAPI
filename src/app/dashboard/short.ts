@@ -8,8 +8,8 @@ export class ShortPipe implements PipeTransform {
         if(value === null){
             value = '';
         }
-        if (value.length > 25) {
-            return value.substr(0, 25) + ' ...';
+        if (value.length > 13) {
+            return value.substr(0, 13) + ' ...';
         }
         return value;
     }
