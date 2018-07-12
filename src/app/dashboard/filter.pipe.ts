@@ -15,10 +15,11 @@ export class FilterPipe implements PipeTransform {
     for (const item of value) {
       console.log('item: ', item);
 
-      var st = '';
+      var st = ''; 
       //  st = item['team'].toLowerCase() + item['COMMENT'].toLowerCase() + item['custgroupName'].toLowerCase() + item['STATUS'].toLowerCase() ;
       if(item['id']){
-        st += item['id'].toLowerCase();
+        var idd = item['id'].toString();
+        st += idd.toLowerCase();
       }
       if(item['custgroupName']){
         st += item['custgroupName'].toLowerCase();
@@ -42,7 +43,8 @@ export class FilterPipe implements PipeTransform {
         st += item['COMMENT'].toLowerCase();
       }
       if(item['days']){
-        st += item['days'].toLowerCase();
+        var day = item['days'].toString();
+        st += day.toLowerCase();
       }
       if(item['type']){
         st += item['type'].toLowerCase();
@@ -63,7 +65,8 @@ export class FilterPipe implements PipeTransform {
         st += item['modifiedtime'].toLowerCase();
       }
       if(item['cf_568id']){
-        st += item['cf_568id'].toLowerCase();
+        var cf = item['cf_568id'].toString();
+        st += cf.toLowerCase();
       }
 
       var string2 = filterString.toLowerCase();
