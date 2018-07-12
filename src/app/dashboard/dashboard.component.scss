@@ -52,6 +52,12 @@
     top: 4px;
     right: 0px;
 }
+.a {
+  white-space: nowrap; 
+  width: 30px; 
+  overflow: hidden;
+  text-overflow:ellipsis;
+}
 
 th {
   padding-top: 12px;
