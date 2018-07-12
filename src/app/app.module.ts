@@ -9,10 +9,10 @@ import { RouterModule } from '@angular/router';
 import { AppRoutingModule } from './app-routing.module';
 import { ApiService } from './services/api.service';
 import { CommonService } from './services/common/common.service';
-
+import { NgxPaginationModule } from 'ngx-pagination';
 import { AppComponent } from './app.component';
 import { LayoutComponent } from './layout/layout.component';
-import { DashboardComponent } from './dashboard/dashboard.component';
+// import { DashboardComponent } from './dashboard/dashboard.component';
 import { ShortPipe } from './dashboard/short';
 import { FilterPipe } from './dashboard/filter.pipe';
 
@@ -21,8 +21,9 @@ import { FilterPipe } from './dashboard/filter.pipe';
   declarations: [
     AppComponent,
     ShortPipe,
+    NgxPaginationModule,
     LayoutComponent,
-    DashboardComponent,
+    // DashboardComponent,
     FilterPipe
   ],
   imports: [

@@ -28,7 +28,8 @@
 
       </tr>
     </thead>
-    <tbody *ngFor="let item of resultData | filter:FilterSearch: '' ">
+    <tbody *ngFor="let item of resultData | filter:FilterSearch: ''">
+    <!-- <tbody *ngFor="let item of resultData | filter:FilterSearch: '' | paginate: { itemsPerPage:5, currentPage: p }"> -->
       <tr>
         <td>{{ item.id }}</td>
         <td>{{ item.custgroupName }}</td>
@@ -49,6 +50,7 @@
         <td></td>
       </tr>
     </tbody>
+    <!-- <pagination-controls (pageChange)="p =$event"></pagination-controls> -->
   </table>
   <ul class="pagination position">
     <li class="active"><a href="#" >1</a></li>
